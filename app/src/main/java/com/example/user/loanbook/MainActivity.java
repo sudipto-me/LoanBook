@@ -1,5 +1,6 @@
 package com.example.user.loanbook;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -85,6 +86,8 @@ public class MainActivity extends AppCompatActivity
             // Handle the camera action
             Toast.makeText(MainActivity.this,"Hello World",Toast.LENGTH_SHORT).show();
         } else if (id == R.id.nav_gallery) {
+            Intent intent = new Intent(MainActivity.this,AddPeopleActivity.class);
+            startActivity(intent);
 
         } else if (id == R.id.nav_slideshow) {
 
