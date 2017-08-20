@@ -8,4 +8,11 @@
         <item>Lender</item>
         <item>Loaner</item>
     </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Peoples Name</string>
+    <string name="date">Date</string>
+    <string name="peoples_type">Peoples Type</string>
+    <string name="peoples_number">Peoples Number</string>
+    <string name="details_of_people">Details of People</string>
 </resources>

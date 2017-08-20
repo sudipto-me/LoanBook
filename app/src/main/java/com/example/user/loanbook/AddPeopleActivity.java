@@ -2,18 +2,18 @@ package com.example.user.loanbook;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
-import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Calendar;
 
@@ -89,12 +89,27 @@ public class AddPeopleActivity extends AppCompatActivity {
                 peoplesName = mPeoplesName.getText().toString().trim();
                 peoplesNumber = mPeoplesNumber.getText().toString().trim();
                 peoplesType = String.valueOf(mSpinner.getSelectedItem());
+                if (!peoplesName.isEmpty() && !peoplesNumber.isEmpty() && !peoplesType.isEmpty() && !date.isEmpty()) {
+                    db.insertPeople(peoplesName, peoplesNumber, peoplesType, date);
+                    //alert dialog for popping up the details
 
-                db.insertPeople(peoplesName, peoplesNumber, peoplesType, date);
+                    AlertDialog.Builder mAlertDialogBuilder = new AlertDialog.Builder(context);
+                    View mView = getLayoutInflater().inflate(R.layout.showpeopledialog, null);
+                    TextView tv_name = (TextView) mView.findViewById(R.id.tv_people_name);
+                    TextView tv_number = (TextView) mView.findViewById(R.id.tv_peoples_mobile);
+                    TextView tv_type = (TextView) mView.findViewById(R.id.tv_peoples_type);
+                    TextView tv_date = (TextView) mView.findViewById(R.id.tv_added_date);
 
-                Cursor cursor = db.getPeople();
-                if (cursor.moveToFirst()) {
-                    Log.d("Data" + "From" + cursor.getString(1), toString());
+                    tv_name.setText("Name:" + peoplesName);
+                    tv_number.setText("Number:" + peoplesNumber);
+                    tv_type.setText("Type:" + peoplesType);
+                    tv_date.setText("Date:" + date);
+
+                    mAlertDialogBuilder.setView(mView);
+                    AlertDialog dialog = mAlertDialogBuilder.create();
+                    dialog.show();
+                } else {
+                    Toast.makeText(context, "please fill necessary fileds", Toast.LENGTH_SHORT).show();
                 }
 
 

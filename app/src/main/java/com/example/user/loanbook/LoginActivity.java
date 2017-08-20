@@ -65,9 +65,15 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 name = et_userName.getText().toString().trim();
                 password = et_passWord.getText().toString().trim();
+                if(password.length()>=8){
                 db.insetUser(name, password);
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(intent);
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    startActivity(intent);
+                }
+                else{
+                    Toast.makeText(LoginActivity.this,"Password must be 8 characters or more",Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 

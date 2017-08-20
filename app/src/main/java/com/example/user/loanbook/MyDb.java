@@ -6,6 +6,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by USER on 8/18/2017.
  */
@@ -13,7 +16,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class MyDb extends SQLiteOpenHelper {
 
     //database version
-    public static final int DATABASE_VERSION = 3;
+    public static final int DATABASE_VERSION = 4;
     //database name
     public static final String DATABASE_NAME = "loanbook.db";
     //table name
@@ -26,6 +29,7 @@ public class MyDb extends SQLiteOpenHelper {
     //new table name
     public static final String TABLE_PEOPLE = "PeoplesTable";
     //column name
+    public static final String COLUMN_ID = "id";
     public static final String COLUMN_NAME = "name";
     public static final String COLUMN_MOBILE = "mobile";
     public static final String COLUMN_TYPE = "type";
@@ -36,7 +40,8 @@ public class MyDb extends SQLiteOpenHelper {
     public static final String SQL_CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + "(" + COLUMN_ONE + " TEXT," +
             COLUMN_TWO + " TEXT)";
 
-    public static final String SQL_CREATE_PEOPLE = "CREATE TABLE "+ TABLE_PEOPLE+ "("+ COLUMN_NAME+ " TEXT,"+
+    public static final String SQL_CREATE_PEOPLE = "CREATE TABLE "+ TABLE_PEOPLE+ "("+ COLUMN_ID +" INTEGER PRIMARY KEY AUTOINCREMENT, "+
+            COLUMN_NAME+ " TEXT,"+
             COLUMN_MOBILE+" TEXT,"+
             COLUMN_TYPE+" TEXT,"+
             COLUMN_DATE+" TEXT)";
@@ -119,6 +124,7 @@ public class MyDb extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         String[] projection = {
+                COLUMN_ID,
                 COLUMN_NAME,
                 COLUMN_MOBILE,
                 COLUMN_TYPE,
@@ -134,6 +140,35 @@ public class MyDb extends SQLiteOpenHelper {
                 null);
 
         return cursor;
+    }
+
+    //get all information from the table
+    public List<People> getAllPeoples(){
+        List<People> peopleList = new ArrayList<People>();
+        //String select query
+        String selectQuey = "SELECT * FROM "+ TABLE_PEOPLE;
+
+            SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuey,null);
+
+        //looping through all rows and adding to list
+        if (cursor.moveToFirst()){
+
+            do{
+                People people = new People();
+                people.setId(Integer.parseInt(cursor.getString(0)));
+                people.setName(cursor.getString(1));
+                people.setNumber(cursor.getString(2));
+                people.setType(cursor.getString(3));
+                people.setDate(cursor.getString(4));
+
+                peopleList.add(people);
+            }while (cursor.moveToNext());
+
+
+
+        }
+        return peopleList;
     }
 
 }

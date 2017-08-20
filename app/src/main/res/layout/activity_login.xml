@@ -58,7 +58,7 @@
             android:ems="10"
             android:gravity="center"
             android:hint="Password(Optional)"
-            android:inputType="textEmailAddress"
+            android:inputType="textPassword"
             android:textSize="20sp"
             android:textStyle="normal" />
     </android.support.design.widget.TextInputLayout>

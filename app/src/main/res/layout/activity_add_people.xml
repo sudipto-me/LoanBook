@@ -61,11 +61,11 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="16dp"
+        android:fontFamily="sans-serif-condensed"
         android:text="Select Date"
-        android:textSize="20sp"
         android:textColor="#424242"
-        android:textStyle="bold"
-        android:fontFamily="sans-serif-condensed"/>
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/btn_add_people"
@@ -76,6 +76,8 @@
         android:layout_marginRight="16dp"
         android:layout_marginTop="50dp"
         android:text="Add this people to your list" />
+
+
 
 
 </LinearLayout>
