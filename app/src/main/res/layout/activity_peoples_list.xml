@@ -4,17 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/personal_loan"
     tools:context="com.example.user.loanbook.PeoplesListActivity">
 
 
     <android.support.v7.widget.RecyclerView
-        android:id = "@+id/rv_show_people"
-        android:layout_width="395dp"
+        android:id="@+id/rv_show_people"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginLeft="16dp"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        app:layout_constraintRight_toRightOf="parent"
+
+        tools:layout_constraintLeft_creator="1"
+
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="16dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

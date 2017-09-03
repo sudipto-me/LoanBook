@@ -9,10 +9,23 @@
         <item>Loaner</item>
     </string-array>
 
+    <string-array name="payment">
+        <item>Pay</item>
+        <item>Lend</item>
+    </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Peoples Name</string>
     <string name="date">Date</string>
     <string name="peoples_type">Peoples Type</string>
     <string name="peoples_number">Peoples Number</string>
     <string name="details_of_people">Details of People</string>
+    <string name="name">Name</string>
+    <string name="mobile">Mobile</string>
+    <string name="select_date">Select Date</string>
+    <string name="add_this_people_to_your_list">Add this people to your list</string>
+    <string name="amount">Amount</string>
+    <string name="send_payment">Send Payment</string>
+    <string name="add_record">Add Record</string>
+    <string name="start_adding_record">Start Adding Record!</string>
+    <string name="record_date">Record Date</string>
 </resources>

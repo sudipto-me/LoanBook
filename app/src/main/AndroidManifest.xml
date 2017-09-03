@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.user.loanbook">
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -23,8 +23,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AddPeopleActivity" />
-        <activity android:name=".PeoplesListActivity"></activity>
+        <activity
+            android:name=".AddPeopleActivity"
+            android:parentActivityName=".MainActivity"></activity>
+        <activity
+            android:name=".PeoplesListActivity"
+            android:parentActivityName=".MainActivity"></activity>
+        <activity android:name=".AddRecord"></activity>
     </application>
 
 </manifest>

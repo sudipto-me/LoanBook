@@ -20,15 +20,15 @@ public class PeoplesListActivity extends AppCompatActivity {
     MyDb db;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_peoples_list);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setTitle("People List");
         context = this;
         db = new MyDb(PeoplesListActivity.this);
-
-        rv_simple_people = (RecyclerView)findViewById(R.id.rv_show_people);
+        rv_simple_people = (RecyclerView) findViewById(R.id.rv_show_people);
 
     }
 
@@ -37,23 +37,19 @@ public class PeoplesListActivity extends AppCompatActivity {
         super.onStart();
         rv_simple_people.setHasFixedSize(false);
         linearLayoutManager = new LinearLayoutManager(this);
-        peopleAdapter = new PeopleAdapter(context,peopleArrayList);
+        peopleAdapter = new PeopleAdapter(context, peopleArrayList);
         rv_simple_people.setLayoutManager(linearLayoutManager);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         peopleArrayList = db.getAllPeoples();
 
-        for (People people:peopleArrayList){
-            String log = "Id:"+people.getId()+"Name:"+people.getName()+"Number:"+people.getNumber();
-            Log.d("Reading","Peoples"+log);
+        for (People people : peopleArrayList) {
+            String log = "Id:" + people.getId() + "Name:" + people.getName() + "Number:" + people.getNumber();
+            Log.d("Reading", "Peoples" + log);
 
         }
-        peopleAdapter = new PeopleAdapter(context,peopleArrayList);
+        peopleAdapter = new PeopleAdapter(context, peopleArrayList);
         rv_simple_people.setAdapter(peopleAdapter);
         peopleAdapter.notifyDataSetChanged();
-
-
-
-
 
 
     }

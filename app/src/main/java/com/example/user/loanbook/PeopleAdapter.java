@@ -51,7 +51,7 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.ViewHolder
         public ViewHolder(View itemView) {
             super(itemView);
             mPeoplesId = (TextView) itemView.findViewById(R.id.tv_peoples_id);
-            mPeoplesName = (TextView) itemView.findViewById(R.id.tv_people_name);
+            mPeoplesName = (TextView) itemView.findViewById(R.id.tv_peoples_name);
             mPeoplesNumber = (TextView) itemView.findViewById(R.id.tv_peoples_number);
         }
     }
