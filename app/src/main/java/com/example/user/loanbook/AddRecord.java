@@ -25,10 +25,13 @@ public class AddRecord extends AppCompatActivity implements AdapterView.OnItemSe
     Context context;
     String label;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_record);
+        setTitle("Add Record");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         context = this;
         mShowDate = (TextView) findViewById(R.id.tv_DateShow);
         spr_people_name = (Spinner) findViewById(R.id.spr_people_name);

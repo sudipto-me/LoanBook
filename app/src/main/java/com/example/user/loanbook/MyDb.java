@@ -35,6 +35,18 @@ public class MyDb extends SQLiteOpenHelper {
     public static final String COLUMN_TYPE = "type";
     public static final String COLUMN_DATE = "date";
 
+    //record table
+    public static final String TABLE_RECORD = "RecordsTable";
+    //column name
+    public static final String COLUMN_RECORD_ID = "id";
+    public static final String COLUMN_RECORD_DATE = "date";
+    public static final String COLUMN_RECORD_NAME = "name";
+    public static final String COLUMN_RECORD_LOAN = "loan";
+    public static final String COLUMN_RECORD_PAY = "pay";
+    public static final String COLUMN_PEOPLE_ID = "people_id";
+
+
+
 
     //table query
     public static final String SQL_CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + "(" + COLUMN_ONE + " TEXT," +
@@ -45,6 +57,18 @@ public class MyDb extends SQLiteOpenHelper {
             COLUMN_MOBILE + " TEXT," +
             COLUMN_TYPE + " TEXT," +
             COLUMN_DATE + " TEXT)";
+
+     public static final String SQL_CREATE_RECORD = "CREATE TABLE "+TABLE_RECORD+ "(" + COLUMN_RECORD_ID +" INTEGER PRIMARY KEY AUTOINCREMENT, "+
+             COLUMN_RECORD_NAME + " TEXT, "+
+             COLUMN_RECORD_DATE + " TEXT, "+
+             COLUMN_RECORD_LOAN + " TEXT, "+
+             COLUMN_RECORD_PAY + " TEXT,"+
+             COLUMN_PEOPLE_ID + " INTEGER, "+
+             "FOREIGN KEY (" + COLUMN_PEOPLE_ID +") REFERENCES " +
+             TABLE_PEOPLE + " (id) " + ")";
+
+
+
 
     private static final String SQL_DELETE_ENTRIES =
             "DROP TABLE IF EXISTS " + TABLE_NAME;
@@ -59,6 +83,7 @@ public class MyDb extends SQLiteOpenHelper {
 
         sqLiteDatabase.execSQL(SQL_CREATE_TABLE);
         sqLiteDatabase.execSQL(SQL_CREATE_PEOPLE);
+        sqLiteDatabase.execSQL(SQL_CREATE_RECORD);
 
 
     }
@@ -97,6 +122,22 @@ public class MyDb extends SQLiteOpenHelper {
 
         //create a new row in the table
         long newRowId = db.insert(TABLE_PEOPLE, null, contentValues);
+    }
+
+    //adding record in the database
+    public void insertRecord(String name,String date,int loan,int pay,int id){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        //create a new map of values
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COLUMN_RECORD_NAME,name);
+        contentValues.put(COLUMN_RECORD_DATE,date);
+        contentValues.put(COLUMN_RECORD_LOAN,loan);
+        contentValues.put(COLUMN_RECORD_PAY,pay);
+
+
+        //create a new row in the table
+        long newRowId = db.insert(TABLE_RECORD,null,contentValues);
     }
 
     //get user valued from the database

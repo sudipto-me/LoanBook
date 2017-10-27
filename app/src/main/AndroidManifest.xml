@@ -29,7 +29,8 @@
         <activity
             android:name=".PeoplesListActivity"
             android:parentActivityName=".MainActivity"></activity>
-        <activity android:name=".AddRecord"></activity>
+        <activity android:name=".AddRecord"
+            android:parentActivityName=".MainActivity"></activity>
     </application>
 
 </manifest>
